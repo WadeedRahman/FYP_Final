@@ -10,10 +10,7 @@ const Footer = () => {
           
                 <p>
                     MediFast
-                    Civil Line
-                    Jhelum
-                    Near Anmol Bakers
-                    Phone Number: 0340 3111490
+                    Powered by DevOps automation for fast, reliable, and secure healthcare delivery.
                 </p>
                 <p>
                     Timing

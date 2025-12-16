@@ -224,7 +224,7 @@ Responsive Styles
 }
 
 .logo {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 600;
     text-transform: uppercase;
     padding: 0 0.4rem;
@@ -330,14 +330,14 @@ nav hr {
 }
 
 .logo2 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: 600;
     text-transform: uppercase;
     padding: 0 0.4rem;
     letter-spacing: -3px;
     color: black;
-    margin-left: 185px;
-    margin-top: -34px;
+    margin-left: 193px;
+    margin-top: -35px;
     font-family: 'EB Garamond', serif;
 }
 
@@ -368,9 +368,73 @@ nav hr {
 .go {
     width: 20%;
     margin-left: -30px;
+    
 }
 
 /* Responsive Styles */
+@media (min-width: 1600px) {
+    .navlist {
+        margin-left: 220px;
+    }
+
+    .logo2 {
+        margin-left: 180px;
+        margin-top: -30px;
+    }
+
+    .searchbox {
+        margin-left: -5%;
+    }
+}
+@media (max-width: 1599px) and (min-width: 1366px) {
+    .navlist {
+        margin-left: 200px;
+    }
+
+    .logo2 {
+        margin-left: 170px;
+        margin-top: -32px;
+    }
+
+    .searchbox {
+        margin-left: -7%;
+    }
+}
+@media (max-width: 1365px) and (min-width: 1280px) {
+    .navlist {
+        margin-left: 150px;
+    }
+
+    .logo2 {
+        margin-left: 150px;
+        margin-top: -30px;
+    }
+
+    .searchbox {
+        margin-left: -6%;
+    }
+}
+@media (max-width: 1279px) and (min-width: 1025px) {
+    .navlist {
+        margin-left: 100px;
+        gap: 2.5rem;
+    }
+
+    .logo2 {
+        margin-left: 120px;
+        margin-top: -26px;
+    }
+
+    .searchbox {
+        width: 480px;
+        margin-left: -4%;
+    }
+}
+
+
+
+
+
 @media (max-width: 1024px) {
     .logo {
         font-size: 2rem;
@@ -453,6 +517,12 @@ nav hr {
 }
 
 @media (max-width: 600px) {
+    .logo2{
+        margin-bottom: 15px;
+    }
+    .searchbox{
+        margin-top: -100px;
+    }
     .nav-toggle {
         display: block;
         cursor: pointer;
@@ -489,3 +559,4 @@ nav hr {
         display: none;
     }
 }
+

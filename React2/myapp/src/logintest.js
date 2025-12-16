@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import './Login.css'; 
 import { RiUser3Fill, RiLockPasswordFill } from 'react-icons/ri';
 import { useNavigate, Link } from "react-router-dom";
@@ -92,4 +92,126 @@ const Login = () => {
     );
 };
 
+export default Login;*/
+
+import React, { useState, useEffect } from "react";
+import './Login.css'; 
+import { RiUser3Fill, RiLockPasswordFill } from 'react-icons/ri';
+import { useNavigate, Link } from "react-router-dom";
+
+const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    /* =========================
+       AUTO LOGIN (DEV MODE)
+       Comment this block to enable real login
+    ========================= */
+    useEffect(() => {
+        // Fake session for UI testing
+        sessionStorage.setItem('session_token', 'dev-token');
+        sessionStorage.setItem('username', 'dev-user');
+        localStorage.setItem('session_token', 'dev-token');
+        localStorage.setItem('username', 'dev-user');
+
+        navigate('/home'); // Auto redirect
+    }, [navigate]);
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        /* =========================
+           REAL AUTH (DISABLED)
+           Uncomment when backend ready
+        ========================= */
+
+        /*
+        try {
+            const response = await fetch('http://localhost:8080/userAuthentication.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const responseData = await response.json();
+
+            if (response.ok && responseData.success) {
+                sessionStorage.setItem('session_token', responseData.session_token);
+                sessionStorage.setItem('username', responseData.username);
+                localStorage.setItem('session_token', responseData.session_token);
+                localStorage.setItem('username', responseData.username);
+                navigate('/home');
+            } else {
+                alert(responseData.message);
+            }
+        } catch (error) {
+            alert('Network error');
+        }
+        */
+
+        // TEMPORARY UI LOGIN
+        navigate('/home');
+    }
+
+    return (
+        <div className="wa">
+            <div className="login">
+                <h2 className="heading">LOGIN</h2>
+
+                <form className="ff" onSubmit={handleSubmit}>
+                    <div className="login-form">
+                        <label className="form-label">
+                            <RiUser3Fill /> Username
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={username}
+                            onChange={handleUsernameChange}
+                        />
+                    </div>
+
+                    <div className="login-form">
+                        <label className="form-label">
+                            <RiLockPasswordFill /> Password
+                        </label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            value={password}
+                            onChange={handlePasswordChange}
+                        />
+
+                        <div className="FP">
+                            <Link to="/ForgotPassword">Forget Password</Link>
+                        </div>
+                    </div>
+
+                    <button type="submit" className="login-button">
+                        Submit
+                    </button>
+
+                    <div className="login-form-footer">
+                        <p>
+                            Don't have an account? <Link to="/signup">Signup</Link>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
+
 export default Login;
+
