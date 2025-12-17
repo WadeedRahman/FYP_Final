@@ -372,6 +372,56 @@ nav hr {
 }
 
 /* Responsive Styles */
+/* ===== Responsive adjustment for 1905 × 879 screens ===== */
+@media screen and (min-width: 1800px) and (max-width: 1950px) {
+
+    .logo {
+        font-size: 2.5rem;
+        margin-left: 70px;
+    }
+
+    .searchbox {
+        width: 650px;
+        margin-left: -6%;
+    }
+
+    .carticon {
+        margin-right: 70px;
+        font-size: 2.2rem;
+    }
+
+    nav hr {
+        margin-top: -4.8%;
+    }
+
+    .navlist {
+        margin-left: 380px;
+        gap: 4rem;
+    }
+
+    .logo2 {
+        font-size: 2.4rem;
+        margin-left: 240px;
+        margin-top: -38px;
+    }
+
+    .ls {
+        margin-right: 70px;
+        gap: 3rem;
+    }
+
+    .go {
+        width: 18%;
+        margin-left: -15px;
+    }
+}
+
+
+
+
+
+
+
 @media (min-width: 1600px) {
     .navlist {
         margin-left: 220px;
