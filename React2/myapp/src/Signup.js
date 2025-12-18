@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import './Signup.css';
-import { RiUser3Fill, RiLockPasswordFill, RiMailAddFill } from 'react-icons/ri';
-import { Link, useNavigate } from 'react-router-dom';
+import "./Signup.css";
+import { RiUser3Fill, RiLockPasswordFill, RiMailAddFill } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleSignup = async (event) => {
@@ -16,50 +18,72 @@ function Signup() {
 
         const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*_)[a-zA-Z\d_]{4,15}$/;
         if (!usernameRegex.test(username)) {
-            alert('Username must contain lowercase, uppercase, numbers, underscore, and be 4 to 15 characters long.');
+            toast.error(
+                "Username must include lowercase, uppercase, number, underscore (4–15 chars)",
+                { position: "top-right", autoClose: 3000 }
+            );
             return;
         }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,9}$/;
         if (!passwordRegex.test(password)) {
-            alert('Password must contain lowercase, uppercase, symbols, and be 4 to 9 characters long.');
+            toast.error(
+                "Password must include lowercase, uppercase, number, symbol (4–9 chars)",
+                { position: "top-right", autoClose: 3000 }
+            );
             return;
         }
 
         try {
-            const response = await fetch('http://localhost:8080/signup.php', {
-                method: 'POST',
+            const response = await fetch("http://localhost:8080/signup.php", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ 'name': username, 'email': email, 'password': password })
+                body: JSON.stringify({
+                    name: username,
+                    email: email,
+                    password: password,
+                }),
             });
+
             if (response.ok) {
-                alert('Signup successful');
-                navigate('/login'); // Navigate to login page
+                toast.success("Signup successful! Please login.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+
+                setTimeout(() => {
+                    navigate("/login");
+                }, 1500);
             } else {
                 const errorData = await response.json();
-                alert('Error: ' + errorData.message);
-                console.error('Error:', response.statusText);
+                toast.error(errorData.message || "Signup failed", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Network error. Please try again later.');
+            console.error("Error:", error);
+            toast.error("Network error. Please try again later.", {
+                position: "top-right",
+                autoClose: 3000,
+            });
         }
     };
 
     return (
         <>
+            <ToastContainer />
+
             <div className="wa">
                 <div className="signup">
-                    <h2 className="heading">
-                        SIGNUP
-                    </h2>
+                    <h2 className="heading">SIGNUP</h2>
+
                     <form className="ff" onSubmit={handleSignup}>
                         <div className="signup-form">
-                            <label htmlFor="username" className="form-label">
-                                <RiUser3Fill />
-                                Username
+                            <label className="form-label">
+                                <RiUser3Fill /> Username
                             </label>
                             <input
                                 type="text"
@@ -69,8 +93,9 @@ function Signup() {
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
+
                         <div className="signup-form">
-                            <label htmlFor="email" className="form-label">
+                            <label className="form-label">
                                 <RiMailAddFill /> Email
                             </label>
                             <input
@@ -81,8 +106,9 @@ function Signup() {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
+
                         <div className="signup-form">
-                            <label htmlFor="password" className="form-label">
+                            <label className="form-label">
                                 <RiLockPasswordFill /> Password
                             </label>
                             <input
@@ -93,15 +119,22 @@ function Signup() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <button type="submit" className="signup-button">Submit</button>
+
+                        <button type="submit" className="signup-button">
+                            Submit
+                        </button>
+
                         <div className="signupform-footer">
-                            <p>Already have an account? <Link to="/login">Login</Link></p>
+                            <p>
+                                Already have an account?{" "}
+                                <Link to="/login">Login</Link>
+                            </p>
                         </div>
                     </form>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Signup;

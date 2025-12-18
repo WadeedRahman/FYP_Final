@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { RiUser3Fill, RiLockPasswordFill, RiMailAddFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ForgotPassword() {
   const [username, setUsername] = useState("");
@@ -13,9 +15,9 @@ function ForgotPassword() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const response = await fetch("http://localhost:8080/recover.php", {
         method: "POST",
@@ -29,26 +31,50 @@ function ForgotPassword() {
           confirm_password: confirmPassword,
         }),
       });
-      const responseData = await response.json();
-      if (response.ok && responseData.success) {
-        setMessage(responseData.message);
-        alert('Password changed successfully');
-        navigate('/Login');
 
+      const responseData = await response.json();
+
+      if (response.ok && responseData.success) {
+        toast.success("Password reset successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+
+        setMessage(responseData.message);
+
+        setTimeout(() => {
+          navigate("/Login");
+        }, 1500);
       } else {
+        toast.error(responseData.message || "Password reset failed", {
+          position: "top-right",
+          autoClose: 3000,
+        });
         setMessage(responseData.message);
       }
     } catch (error) {
       console.error("Error:", error);
+      toast.error("Network error. Please try again later.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
 
   return (
     <>
-     
+      <ToastContainer />
+
       <form className="forget-form" onSubmit={handleSubmit}>
         <h2 className="recover">Recover Password</h2>
-        <p className="parag">Please enter the username, email address, and New Password for your account</p>
+        <p className="parag">
+          Please enter the username, email address, and New Password for your account
+        </p>
+
         <div className="level">
           <label>
             <RiUser3Fill /> Username
@@ -62,6 +88,7 @@ function ForgotPassword() {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
+
         <div>
           <label>
             <RiMailAddFill /> Enter Email Address
@@ -75,6 +102,7 @@ function ForgotPassword() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div>
           <label>
             <RiLockPasswordFill /> Enter New Password
@@ -88,6 +116,7 @@ function ForgotPassword() {
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
+
         <div>
           <label>
             <RiLockPasswordFill /> Confirm New Password
@@ -101,12 +130,13 @@ function ForgotPassword() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
+
         <button type="submit" className="forgot-button">
           Submit
         </button>
+
         {message && <p className="message">{message}</p>}
       </form>
-      
     </>
   );
 }
