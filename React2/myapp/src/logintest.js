@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import './Login.css'; 
+import './Login.css';
 import { RiUser3Fill, RiLockPasswordFill } from 'react-icons/ri';
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -24,32 +26,55 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 'username': username, 'password': password })
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
             });
+
             const responseData = await response.json();
+
             if (response.ok && responseData.success) {
-                console.log('Login successful!');
-                sessionStorage.setItem('session_token', responseData.session_token); 
-                sessionStorage.setItem('username', responseData.username); // Store session token in session storage
-                localStorage.setItem('session_token', responseData.session_token); 
-                localStorage.setItem('username', responseData.username); // Store session token in session storage
-                navigate('/home');
+                toast.success("Login successful!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+
+                sessionStorage.setItem('session_token', responseData.session_token);
+                sessionStorage.setItem('username', responseData.username);
+                localStorage.setItem('session_token', responseData.session_token);
+                localStorage.setItem('username', responseData.username);
+
+                setTimeout(() => {
+                    navigate('/home');
+                }, 1500);
             } else {
-                console.error("Error:", responseData.message);
-                alert(responseData.message); // Display alert for login failure
+                toast.error(responseData.message || "Invalid username or password", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.'); // Display alert for network errors
+            toast.error("Network error. Please try again later.", {
+                position: "top-right",
+                autoClose: 3000,
+            });
         }
     }
 
     return (
-        <div>
+        <>
+            <ToastContainer />
+
             <div className="wa">
                 <div className="login">
                     <h2 className="heading">LOGIN</h2>
-                    <form name='login' className="ff" onSubmit={handleSubmit}>
+
+                    <form name="login" className="ff" onSubmit={handleSubmit}>
                         <div className="login-form">
                             <label htmlFor="username" className="form-label">
                                 <RiUser3Fill /> Username
@@ -64,6 +89,7 @@ const Login = () => {
                                 autoComplete="off"
                             />
                         </div>
+
                         <div className="login-form">
                             <label htmlFor="password" className="form-label">
                                 <RiLockPasswordFill /> Password
@@ -77,9 +103,15 @@ const Login = () => {
                                 onChange={handlePasswordChange}
                                 autoComplete="off"
                             />
-                            <div className="FP"><Link to="/ForgotPassword">Forget Password</Link></div> 
+                            <div className="FP">
+                                <Link to="/ForgotPassword">Forget Password</Link>
+                            </div>
                         </div>
-                        <button type="submit" className="login-button">Submit</button>
+
+                        <button type="submit" className="login-button">
+                            Submit
+                        </button>
+
                         <div className="login-form-footer">
                             <p>
                                 Don't have an account? <Link to="/signup">Signup</Link>
@@ -88,7 +120,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
