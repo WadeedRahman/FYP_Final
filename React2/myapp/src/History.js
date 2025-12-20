@@ -76,9 +76,11 @@ const History = () => {
                     )
                 )}
             </div>
-            <Footer />
+            
         </div>
+        
     );
+   // <Footer />
 };
 
 export default History;

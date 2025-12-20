@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import './Login.css';
 import { RiUser3Fill, RiLockPasswordFill } from 'react-icons/ri';
 import { useNavigate, Link } from "react-router-dom";
@@ -124,9 +124,9 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Login;*/
 
-/*import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Login.css'; 
 import { RiUser3Fill, RiLockPasswordFill } from 'react-icons/ri';
 import { useNavigate, Link } from "react-router-dom";
@@ -139,7 +139,7 @@ const Login = () => {
     /* =========================
        AUTO LOGIN (DEV MODE)
        Comment this block to enable real login
-    ========================= *
+    ========================= */
     useEffect(() => {
         // Fake session for UI testing
         sessionStorage.setItem('session_token', 'dev-token');
@@ -164,7 +164,7 @@ const Login = () => {
         /* =========================
            REAL AUTH (DISABLED)
            Uncomment when backend ready
-        ========================= *
+        ========================= */
 
         /*
         try {
@@ -190,7 +190,7 @@ const Login = () => {
         } catch (error) {
             alert('Network error');
         }
-        *
+        */
 
         // TEMPORARY UI LOGIN
         navigate('/home');
@@ -246,4 +246,4 @@ const Login = () => {
 };
 
 export default Login;
-*/
+

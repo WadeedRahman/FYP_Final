@@ -1,7 +1,7 @@
 .chatbot-container{
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 800px;
     margin: 0 auto;
     margin-top: 5%;
     padding: 20px;

@@ -46,21 +46,8 @@ const Contact = () => {
     <div>
       <Navbar />
       <h1 className='contact'>Contact Us</h1>
-      <section id="page">
-        <div className='rrright'>
-          <div className='info'>Contact Information</div>
-          <p className='ms'> <RiPhoneFill className='ico'/> 0340 3111490</p>
-          <p className='ms'> <a href="mailto:wadeed125@gmail.com"> 
-            <RiMailSendFill className='ico' /> wadeed125@gmail.com
-          </a> </p>
-          <p className='ms'> <RiMapPin2Fill className='ico'/> Shumali Mohala Civil Line Jhelum</p>
-          <p className='ms'> <a href="https://www.instagram.com/wadeedrehman?igsh=MW52ZHJqbWtoMnowYg=="> 
-            <RiInstagramFill className='ico' /> wadeedrehman
-          </a></p>
-          <p className='ms'> <a href="https://www.linkedin.com/in/wadeed-ur-rahman-03a62b269"> 
-            <RiLinkedinBoxFill className='ico' /> wadeedrehman
-          </a></p>
-        </div>
+      
+       
         <div className='llleft'>
           <form className='form' onSubmit={handleSubmit}>
             <h2 className='h'>Send Message</h2>
@@ -93,7 +80,7 @@ const Contact = () => {
             <button type="submit" className='bn'>Submit</button>
           </form>
         </div>
-      </section>
+      
     </div>
   );
 }
