@@ -8,12 +8,37 @@
     <link rel="stylesheet" href="listuser.css">
 </head>
 <body>
+<div class="side-menu">
+        <div class="brand-name">
+            <h1 class="head">MediFast</h1>
+        </div>
+        <ul>
+            <li class="db"><a href="admin.html"><i class="fa fa-th-large"></i>&nbsp; <span>Dashboard</span></a> </li>
+            <li><a href="add.html"><i class="fa fa-plus"></i>&nbsp;<span>Add Products</span></a></li>
+            <li><a href="delete.html"><i class="fa fa-trash"></i>&nbsp;<span>Delete Product</span></a></li>
+            <li><a href="change.html"><i class="fa fa-money"></i>&nbsp;<span>Change Price</span></a></li>
+            <li><a href="listuser.html"><i class="fa fa-users"></i>&nbsp;<span>List Of Users</span></a></li>
+            <li><a href="orderstatus.html"><i class="fa fa-ambulance"></i>&nbsp;<span>Order Status</span></a></li>
+            <li><a href="deleteuser.html"><i class="fa fa-minus"></i>&nbsp;<span>Delete User</span></a></li>
+       </ul>
+    </div>
     <div class="container">
-        <h1 class="user">User Feedback
-            <ul>
-                <li class="lis"><a href="#" id="logoutButton">LOGOUT</a></li>
-            </ul>
-        </h1>
+        <div class="header">
+            <div class="nav">
+                <div class="search">
+                    <input type="text" placeholder="Search..">
+                    <button type="submit" class="bn"><i class="fa fa-search"></i>.</button>
+                </div>
+                <div class="user">
+                    <ul>
+                        <li class="lis"><a href="#" id="logoutButton">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+   
         <div class="table-container">
             <table id="contactTable">
                 <thead>

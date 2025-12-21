@@ -3,7 +3,7 @@
     background-color: white;
     padding: 40px;
     margin-left: 30%;
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -155,41 +155,135 @@ ul {
 .bn i {
     font-size: 20px;
 }
-@media screen and (max-width: 1050px) {
-    .side-menu li {
-        font-size: 18px;
+/* =========================
+   Large Laptops (≤ 1440px)
+   ========================= */
+@media screen and (max-width: 1440px) {
+    .form-container {
+        margin-left: 25%;
+    }
+
+    .cont {
+        width: 75vw;
+    }
+
+    .cont .header {
+        width: 75vw;
     }
 }
-@media screen and (max-width: 940px) {
-    .side-menu li span {
-        display: none;
+
+/* =========================
+   Small Laptops (≤ 1200px)
+   ========================= */
+@media screen and (max-width: 1200px) {
+    .form-container {
+        margin-left: 20%;
+        width: 280px;
     }
+
     .side-menu {
-        align-items: center;
+        width: 250px;
     }
-    .side-menu li img {
-        width: 40px;
-        height: 40px;
+
+    .cont {
+        width: calc(100vw - 250px);
     }
-    .side-menu li:hover {
-        background: #f05462;
-        padding: 8px 38px;
-        border: 2px solid white;
+
+    .cont .header {
+        width: calc(100vw - 250px);
     }
 }
-@media screen and (max-width:536px) {
-    .brand-name h1 {
+
+
+/* =========================
+   Tablets & Mobile Reset
+   ========================= */
+@media screen and (max-width: 768px) {
+
+    /* Sidebar becomes top menu */
+    .side-menu {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        flex-direction: column;
+        padding-bottom: 10px;
+    }
+
+    .side-menu .brand-name {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .side-menu li {
+        justify-content: center;
+        padding: 12px 20px;
         font-size: 16px;
     }
-    .container .content .cards {
-        justify-content: center;
+
+    .side-menu li span {
+        display: inline;
     }
-    .side-menu li img {
-        width: 30px;
-        height: 30px;
+
+    /* Main content flows normally */
+    .cont {
+        position: relative;
+        width: 100%;
+        height: auto;
     }
-    .container .content .content-2 .recent-payments table th:nth-child(2),
-    .container .content .content-2 .recent-payments table td:nth-child(2) {
-        display: none;
+
+    /* Header becomes normal block */
+    .cont .header {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .cont .header .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cont .header .nav .search {
+        width: 100%;
+    }
+
+    .cont .header .nav .search input[type=text] {
+        width: 90%;
+    }
+
+    .cont .header .nav .user {
+        width: 90%;
+        justify-content: space-between;
+    }
+
+    /* Form properly centered */
+    .form-container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 25px;
+    }
+}
+
+/* =========================
+   Small Mobile Fix
+   ========================= */
+@media screen and (max-width: 480px) {
+
+    .side-menu li {
+        font-size: 14px;
+    }
+
+    .brand-name h1 {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .form-container {
+        width: 95%;
+        padding: 20px;
     }
 }
