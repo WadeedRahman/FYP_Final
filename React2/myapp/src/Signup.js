@@ -16,7 +16,7 @@ function Signup() {
     const handleSignup = async (event) => {
         event.preventDefault();
 
-        const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*_)[a-zA-Z\d_]{4,15}$/;
+        const usernameRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*_)[a-zA-Z\d_]{4,}$/;
         if (!usernameRegex.test(username)) {
             toast.error(
                 "Username must include lowercase, uppercase, number, underscore (4–15 chars)",
@@ -24,8 +24,7 @@ function Signup() {
             );
             return;
         }
-
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,9}$/;
+        const passwordRegex = /^[A-Za-z0-9]{6,8}$/;
         if (!passwordRegex.test(password)) {
             toast.error(
                 "Password must include lowercase, uppercase, number, symbol (4–9 chars)",

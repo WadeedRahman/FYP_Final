@@ -67,11 +67,10 @@ input[type="checkbox"] {
 .side-menu {
     position: fixed;
     background: #4bb7e9;
-    width: 250px; /* Adjust width to be more responsive */
+    width: 20vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: auto; /* Ensure overflow is handled */
 }
 
 .side-menu .brand-name {
@@ -83,7 +82,7 @@ input[type="checkbox"] {
 
 .side-menu li {
     font-size: 20px;
-    padding: 10px 20px; /* Adjust padding for smaller screens */
+    padding: 10px 40px;
     display: flex;
     align-items: center;
 }
@@ -105,17 +104,20 @@ input[type="checkbox"] {
 }
 
 .cont {
-    margin-left: 250px; /* Space for side menu */
-    padding: 20px;
-    width: calc(100% - 250px); /* Adjust width to fit content */
-    background: #f1f1f1;
-    position: fixed;
+    position: absolute;
+    right: 0;
+    width: 80vw;
     height: 100vh;
-    overflow-y: auto; /* Enable scrolling for content area */
+    background: #f1f1f1;
+    display: flex;
+    flex-direction: column;
 }
 
-.header {
-    width: calc(100% - 250px); /* Adjust width to fit content */
+.cont .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80vw;
     height: 10vh;
     background: rgb(244, 245, 242);
     display: flex;
@@ -123,7 +125,32 @@ input[type="checkbox"] {
     justify-content: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    position: fixed;
+}
+
+.cont .header .nav {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.cont .header .nav .search {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.cont .header .nav .search input[type=text] {
+    border: none;
+    background: #f1f1f1;
+    padding: 10px;
+    width: 50%;
+}
+
+.cont .header .nav .user {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 ul {
@@ -134,7 +161,7 @@ ul {
 
 .lis {
     display: inline-block;
-    text-align: right;
+    margin-left: 150px;
     font-size: larger;
     font-weight: bold;
 }
