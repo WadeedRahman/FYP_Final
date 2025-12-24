@@ -101,7 +101,7 @@ const Checkout = () => {
               <input
                 type='text'
                 name='firstName'
-                placeholder='Ammara'
+                placeholder='Name'
                 value={formData.firstName}
                 onChange={handleChange}
               />
@@ -112,7 +112,7 @@ const Checkout = () => {
               <input
                 type='text'
                 name='lastName'
-                placeholder='Wadeed'
+                placeholder='Last Name'
                 value={formData.lastName}
                 onChange={handleChange}
               />
@@ -144,7 +144,7 @@ const Checkout = () => {
               <input
                 type='text'
                 name='address'
-                placeholder='flaa flaa'
+                placeholder='Address'
                 value={formData.address}
                 onChange={handleChange}
               />
@@ -155,7 +155,7 @@ const Checkout = () => {
               <input
                 type='text'
                 name='city'
-                placeholder='Jungle'
+                placeholder='City'
                 value={formData.city}
                 onChange={handleChange}
               />

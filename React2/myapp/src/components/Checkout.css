@@ -1,6 +1,6 @@
 /* Base styles for larger screens */
 .checkout {
-  margin: 50px;
+  margin-left: 50px;
   padding: 50px;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .check input[type="reset"] {
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .view {

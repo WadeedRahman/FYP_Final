@@ -3,7 +3,7 @@
     background-color: white;
     padding: 40px;
     margin-left: 30%;
-    margin-top: 20px;
+    margin-top: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -11,6 +11,7 @@
 
 h1 {
     margin-bottom: 20px;
+    margin-top: 10px;
 
 }
 .head{
@@ -53,37 +54,43 @@ input[type="checkbox"] {
 }
 .side-menu {
     position: fixed;
-    background:#4bb7e9;
-    width: 290px;
+    background: #4bb7e9;
+    width: 20vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
+
 .side-menu .brand-name {
     height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .side-menu li {
     font-size: 20px;
     padding: 10px 40px;
     display: flex;
     align-items: center;
 }
+
 .side-menu li a {
-    color: white; /* Set the color of the links to white */
+    color: white;
     display: flex;
     align-items: center;
     width: 100%;
     text-decoration: none;
 }
+
 .side-menu li:hover {
     background: white;
 }
+
 .side-menu li:hover a {
-    color: #46098d; /* Change color to match hover state */
+    color: #46098d;
 }
+
 .cont {
     position: absolute;
     right: 0;
@@ -93,6 +100,7 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
 }
+
 .cont .header {
     position: fixed;
     top: 0;
@@ -106,16 +114,19 @@ input[type="checkbox"] {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+
 .cont .header .nav {
     width: 90%;
     display: flex;
     align-items: center;
 }
+
 .cont .header .nav .search {
     flex: 3;
     display: flex;
     justify-content: center;
 }
+
 .cont .header .nav .search input[type=text] {
     border: none;
     background: #f1f1f1;
@@ -129,21 +140,25 @@ input[type="checkbox"] {
     justify-content: space-between;
     align-items: center;
 }
+
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
+
 .lis {
     display: inline-block;
     margin-left: 150px;
     font-size: larger;
     font-weight: bold;
 }
+
 .lis a {
     text-decoration: none;
     color: #050505;
 }
+
 .bn {
     width: 40px;
     height: 40px;
@@ -152,9 +167,11 @@ ul {
     align-items: center;
     justify-content: center;
 }
+
 .bn i {
     font-size: 20px;
 }
+
 /* =========================
    Large Laptops (≤ 1440px)
    ========================= */
